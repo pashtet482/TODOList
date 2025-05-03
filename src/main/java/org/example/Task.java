@@ -1,12 +1,31 @@
 package org.example;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
+
 public class Task {
     private int id;
     private String title;
     private boolean completed;
+    private static final ObjectMapper mapper = new ObjectMapper();
 
-    public void setId(int id){
-        this.id = id;
+    public void setId(File folder){
+        File[] files = folder.listFiles((dir, name) -> name.endsWith(".json"));
+
+        for (File file : files) {
+            try {
+                Task task = mapper.readValue(file, Task.class);
+                if (task.getId() > id) {
+                    id = task.getId();
+                }
+            } catch (IOException e) {
+                System.out.println("Ошибка при чтении файла: " + file.getName());
+            }
+        }
+
+        this.id = id + 1;
     }
 
     public int getId(){

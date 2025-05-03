@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         while (true){
             Scanner scanner = new Scanner(in);
+            out.println(" ");
             out.println("Выберите действие:");
             out.println("-------------------");
             out.println("1. Добавить новую задачу");
@@ -21,10 +22,13 @@ public class Main {
 
             switch (a){
                 case 1:
-                    out.println(1);
+                    AddTask.addTask();
                     break;
                 case 2:
+                    out.println("Текущие задачи: ");
                     ScanFiles.scan();
+                    out.println("Введите номер задачи которую необходимо открыть: ");
+                    
                     break;
                 case 3:
                     out.println(3);

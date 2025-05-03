@@ -14,7 +14,6 @@ public final class ScanFiles {
 
     public static void scan(){
         Path dir = Paths.get("src/main/resources/TODO");
-
         try (Stream<Path> files = Files.list(dir)) {
             files.forEach(file -> out.println(file.getFileName()));
         } catch (IOException e) {
