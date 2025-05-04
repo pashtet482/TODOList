@@ -22,11 +22,11 @@ public class Main {
 
             switch (a){
                 case 1:
-                    AddTask.addTask();
+                    TaskManager.addTask();
                     break;
                 case 2:
                     out.println("Текущие задачи: ");
-                    ScanFiles.scan();
+
                     out.println("Введите номер задачи которую необходимо открыть: ");
                     
                     break;
