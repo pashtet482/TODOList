@@ -1,5 +1,8 @@
 package org.example;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 public class Task {
     private int id;
     private String title;
@@ -26,19 +29,11 @@ public class Task {
         this.completed = completed;
     }
 
-    public static Task createNew(String title, boolean completed) {
+    @Contract("_ -> new")
+    public static @NotNull Task createNew(String title) {
         if (nextId == -1) {
             nextId = TaskManager.getNextId();
         }
-        return new Task(nextId++, title, completed);
-    }
-
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", completed=" + completed +
-                '}';
+        return new Task(nextId++, title, false);
     }
 }
