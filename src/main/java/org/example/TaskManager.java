@@ -61,7 +61,7 @@ public final class TaskManager {
                     if (num > maxID) maxID = num;
                 }
             }
-            return maxID + 1;
+            return ++maxID;
         } else {
             LOGGER.info(FOLDER_IS_EMPTY);
             return 1;
